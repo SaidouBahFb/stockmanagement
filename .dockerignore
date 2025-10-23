@@ -1,0 +1,46 @@
+# Fichiers et dossiers à ignorer lors de la construction de l'image Docker
+
+# Fichiers de build Maven
+target/
+!target/*.jar
+!target/**/target/*.jar
+
+# Fichiers de configuration IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Fichiers temporaires
+*.tmp
+*.temp
+
+# Fichiers de sauvegarde
+*.bak
+*.swp
+*.swo
+
+# Node modules (si vous utilisez npm pour le frontend)
+node_modules/
+
+# Fichiers Git
+.git/
+.gitignore
+
+# Documentation
+README.md
+HELP.md
+
+# Fichiers Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
