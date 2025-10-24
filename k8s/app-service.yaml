@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: stockmanagement-app-svc
+  namespace: m2glisi
+spec:
+  selector:
+    app: stockmanagement-app
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 30080
+  type: NodePort
+# kubectl create -f app-service.yaml

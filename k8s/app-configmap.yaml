@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: m2glisi
+data:
+  APP_NAME: "stockmanagement"
+  DB_HOST: "mysql"
+  DB_PORT: "3306"
+  DB_NAME: "stockmanagement_db"
+  DB_USERNAME: "root"
+  SERVER_PORT: "8080"
+# kubectl create -f app-configmap.yaml
