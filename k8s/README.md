@@ -1,10 +1,10 @@
-# 🚀 Déploiement Kubernetes - Stock Management
+# Déploiement Kubernetes - Stock Management
 
 Application de gestion de stock déployée sur **Minikube**.
 
 ---
 
-## 📋 Prérequis
+## Prérequis
 
 - **Minikube** installé
 - **kubectl** installé
@@ -12,22 +12,22 @@ Application de gestion de stock déployée sur **Minikube**.
 
 ---
 
-## 🎯 Déploiement Rapide (Étape par Étape)
+## Déploiement Rapide (Étape par Étape)
 
-### **1️⃣ Construire l'image Docker**
+### **1️ Construire l'image Docker**
 
 ```cmd
 cd C:\Users\saidou.bah\Desktop\cours\webservice\stockmanagement
 docker-compose build
 ```
 
-### **2️⃣ Démarrer Minikube**
+### **2 Démarrer Minikube**
 
 ```cmd
 minikube start --driver=docker
 ```
 
-### **3️⃣ Charger les images dans Minikube**
+### **3 Charger les images dans Minikube**
 
 ```cmd
 REM Charger votre image locale
@@ -40,20 +40,20 @@ REM Télécharger phpMyAdmin
 minikube ssh docker pull phpmyadmin/phpmyadmin
 ```
 
-### **4️⃣ Vérifier que les images sont chargées**
+### **4️ Vérifier que les images sont chargées**
 
 ```cmd
 minikube image ls | findstr -i "mysql stockmanagement phpmyadmin"
 ```
 
-### **5️⃣ Déployer l'application**
+### **5️ Déployer l'application**
 
 ```cmd
 cd k8s
 kubectl apply -k .
 ```
 
-### **6️⃣ Surveiller le déploiement**
+### **6️ Surveiller le déploiement**
 
 ```cmd
 kubectl get pods -n m2glisi -w
@@ -63,7 +63,7 @@ kubectl get pods -n m2glisi -w
 
 Appuyez sur **Ctrl+C** pour arrêter la surveillance.
 
-### **7️⃣ Obtenir les URLs d'accès**
+### **7️ Obtenir les URLs d'accès**
 
 ```cmd
 REM URL de l'API
@@ -75,7 +75,7 @@ minikube service phpmyadmin-svc -n m2glisi --url
 
 ---
 
-## 🌐 Accéder aux services
+## Accéder aux services
 
 Une fois déployé, utilisez les URLs fournies par la commande ci-dessus.
 
@@ -86,7 +86,7 @@ Une fois déployé, utilisez les URLs fournies par la commande ci-dessus.
 
 ---
 
-## 📝 Tester l'API
+## Tester l'API
 
 ```cmd
 REM Lister les marques
@@ -100,7 +100,7 @@ curl -X POST http://127.0.0.1:xxxxx/marques -H "Content-Type: application/json" 
 
 ---
 
-## 🔍 Commandes Utiles
+## Commandes Utiles
 
 ### **Voir tous les pods**
 ```cmd
@@ -129,7 +129,7 @@ kubectl rollout restart deployment/stockmanagement-app -n m2glisi
 
 ---
 
-## 🛑 Arrêter et Supprimer
+## Arrêter et Supprimer
 
 ### **Arrêter tous les pods (sans supprimer)**
 ```cmd
@@ -153,7 +153,7 @@ minikube delete
 
 ---
 
-## 🐛 Dépannage
+## Dépannage
 
 ### **Les pods ne démarrent pas ?**
 
@@ -185,27 +185,10 @@ kubectl logs -l app=mysql -n m2glisi
 
 ---
 
-## 📁 Structure des fichiers
-
-```
-k8s/
-├── namespace.yaml              # Namespace m2glisi
-├── mysql-secrets.yaml          # Mot de passe MySQL
-├── mysql-pvc.yaml              # Stockage MySQL
-├── mysql-deployment.yaml       # Base de données
-├── mysql-service.yaml          # Service MySQL
-├── app-configmap.yaml          # Configuration app
-├── app-deployment.yaml         # Application (2 replicas)
-├── app-service.yaml            # Service app (NodePort)
-├── phpmyadmin-deployment.yaml  # Interface MySQL
-├── phpmyadmin-service.yaml     # Service phpMyAdmin
-├── kustomization.yaml          # Déploiement global
-└── README.md                   # Ce fichier
-```
 
 ---
 
-## ✅ Checklist
+## Checklist
 
 - [ ] Minikube démarré (`minikube start`)
 - [ ] Images chargées dans Minikube
@@ -216,15 +199,3 @@ k8s/
 - [ ] phpMyAdmin accessible
 
 ---
-
-## 🎓 Composants déployés
-
-| Composant | Type | Replicas | Port |
-|-----------|------|----------|------|
-| **MySQL** | Deployment | 1 | 3306 |
-| **Application** | Deployment | 2 | 8080 |
-| **phpMyAdmin** | Deployment | 1 | 80 |
-
----
-
-**Bon déploiement ! 🚀**
