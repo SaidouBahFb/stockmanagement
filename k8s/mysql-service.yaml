@@ -8,7 +8,7 @@ spec:
     app: mysql
   ports:
   - protocol: TCP
-    port: 3306
-    targetPort: 3306
-  type: ClusterIP
+    port: 3306  # Port du Service (utilisé par l'app Spring pour se connecter à MySQL)
+    targetPort: 3306  # Port du conteneur MySQL (doit correspondre au containerPort)
+  type: ClusterIP  # Service accessible uniquement DANS le cluster
 # kubectl create -f mysql-service.yaml

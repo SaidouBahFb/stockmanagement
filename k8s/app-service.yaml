@@ -8,8 +8,8 @@ spec:
     app: stockmanagement-app
   ports:
   - protocol: TCP
-    port: 8080
-    targetPort: 8080
-    nodePort: 30080
-  type: NodePort
+    port: 8080  # Port du Service (utilisé par les autres pods pour communiquer)
+    targetPort: 8080  # Port du conteneur (doit correspondre au containerPort du pod)
+    nodePort: 30080  # Port exposé sur la machine hôte
+  type: NodePort  # expose le service à l'extérieur du cluster
 # kubectl create -f app-service.yaml

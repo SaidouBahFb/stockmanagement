@@ -8,8 +8,8 @@ spec:
     app: phpmyadmin
   ports:
   - protocol: TCP
-    port: 80
-    targetPort: 80
-    nodePort: 30081
-  type: NodePort
+    port: 80  # Port du Service (utilisé en interne dans le cluster)
+    targetPort: 80  # Port du conteneur phpMyAdmin (doit correspondre au containerPort)
+    nodePort: 30081  # Port exposé sur la machine hôte
+  type: NodePort  # expose le service à l'extérieur du cluster
 # kubectl create -f phpmyadmin-service.yaml
